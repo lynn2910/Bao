@@ -1,0 +1,3 @@
+[global.databases.core]
+url = "./core.sqlite"
+timeout = 5
