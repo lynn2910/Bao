@@ -1,7 +1,7 @@
-use crate::authorization::generate_password;
+use crate::authorization::{generate_password, Authorization};
 use rocket::fairing::AdHoc;
 use rocket::serde::Serialize;
-use rocket::{error, fairing, Build, Rocket};
+use rocket::{error, fairing, get, routes, Build, Rocket};
 use rocket_db_pools::Database;
 use serde::Deserialize;
 
@@ -53,7 +53,13 @@ async fn main() {
         .manage(config)
         .attach(Db::init())
         .attach(migrations_fairing)
+        .mount("/", routes![test])
         .mount("/hub", authorization::get_routes());
 
     api.launch().await.expect("API launch failed");
+}
+
+#[get("/")]
+fn test(auth: Authorization) -> String {
+    format!("Hello user '{id}'", id = auth.user.first_name)
 }
