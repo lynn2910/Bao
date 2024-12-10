@@ -5,8 +5,6 @@ edition = "2021"
 
 [dependencies]
 rocket = { version = "0.5.1", features = ["default", "json", "serde_json", "tls"] }
-jwt = "0.16.0"
-sha2 = "0.10.8"
 sqlx = { version = "0.7.4", features = ["default", "sqlite", "sqlx-sqlite", "runtime-tokio-native-tls"] }
 tokio = { version = "1.42.0", features = ["full"] }
 dotenv = "0.15.0"
@@ -14,3 +12,12 @@ serde = "1.0.215"
 serde_json = "1.0.133"
 uuid = { version = "1.11.0", features = ["default", "serde", "v4"] }
 rocket_db_pools = { version = "0.2.0", features = ["sqlx_sqlite", "sqlx"] }
+toml = { version = "0.8.19", features = ["parse", "display"] }
+argon2 = { version = "0.5.3", features = ["password-hash", "rand", "std"] }
+anyhow = "1.0.94"
+thiserror = "2.0.6"
+chrono = { version = "0.4.39", features = ["default", "serde"] }
+
+jwt = "0.16.0"
+sha2 = "0.10.8"
+hmac = "0.12.1"
